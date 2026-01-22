@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nihongo アルヒ | Refined JFT & JLPT Practice</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0c0c10;
+  --panel:#ffffff;
+  --ink:#111;
+  --muted:#6b6b6b;
+  --accent:#b13a3a; 
+  --gold:#c9a44c;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);font-family:Inter,system-ui;color:var(--panel)}
+header{min-height:70vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:60px 20px;position:relative}
+header::after{content:"日本語";position:absolute;font-family:'Noto Serif JP',serif;font-size:14rem;color:rgba(255,255,255,.03);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+header h1{font-family:'Noto Serif JP',serif;font-size:3.2rem;letter-spacing:4px;margin:0}
+header p{max-width:520px;color:#cfcfcf;margin-top:20px;line-height:1.7}
+nav{margin-top:40px;display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+nav button{background:transparent;border:1px solid rgba(255,255,255,.5);color:#fff;padding:12px 26px;border-radius:999px;font-weight:600;cursor:pointer}
+nav button:hover{border-color:var(--gold);color:var(--gold)}
+section{display:none;max-width:980px;margin:-80px auto 80px auto;padding:42px;background:var(--panel);color:var(--ink);border-radius:28px;box-shadow:0 40px 120px rgba(0,0,0,.45)}
+section.active{display:block}
+.section-title{font-family:'Noto Serif JP',serif;font-size:1.9rem;margin-top:0}
+.divider{width:80px;height:3px;background:var(--gold);margin:16px 0 30px 0;border-radius:3px}
+.card{background:#fafafa;padding:28px;border-radius:22px;margin-bottom:26px;border:1px solid #eee}
+.badge{display:inline-block;font-size:.75rem;letter-spacing:1px;padding:6px 14px;border-radius:999px;background:#f4f4f4;color:#444;text-transform:uppercase}
+
+/* JFT BUTTON GRID */
+.jft-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px;margin-top:22px}
+.jft-btn{background:linear-gradient(135deg,#ffffff,#f7f7f7);border:1px solid #e2e2e2;border-radius:18px;padding:18px 14px;text-align:center;cursor:pointer;transition:.25s;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+.jft-btn strong{display:block;font-size:1rem;letter-spacing:1px}
+.jft-btn span{font-size:.8rem;color:var(--muted)}
+.jft-btn:hover{transform:translateY(-4px);border-color:var(--gold);box-shadow:0 16px 40px rgba(0,0,0,.12)}
+
+.question{margin-bottom:26px}
+.option{padding:14px 16px;border-radius:14px;margin:10px 0;border:1px solid #ddd;cursor:pointer;transition:.2s}
+.option:hover{border-color:var(--accent);background:#fff6f6}
+.correct{background:#e6f4ec;border-color:#5aa27a}
+.wrong{background:#fdeaea;border-color:#b13a3a}
+.explain{margin-top:10px;font-size:.9rem;color:var(--muted)}
+.cta{background:var(--accent);color:#fff;padding:14px 34px;border-radius:999px;font-weight:700;border:none;cursor:pointer}
+.cta.secondary{background:#fff;color:var(--accent);border:1px solid var(--accent)}
+.cta:hover{opacity:.9}
+footer{text-align:center;color:#aaa;font-size:.9rem;padding:60px 20px}
+</style>
+</head>
+<body>
+<header>
+<h1>日本語 アルヒ</h1>
+<p>Refined practice for those who aim to <b>pass JFT & JLPT</b>. Minimal. Serious. Effective.</p>
+<nav>
+<button onclick="show('home')">Overview</button>
+<button onclick="show('jft')">JFT</button>
+<button onclick="show('jlpt')">JLPT</button>
+<button onclick="show('premium')">Premium</button>
+</nav>
+</header>
+
+<section id="home" class="active">
+<span class="badge">Philosophy</span>
+<h2 class="section-title">Belajar dengan disiplin Jepang</h2>
+<div class="divider"></div>
+<p>Nihongo アルヒ dirancang untuk pelajar serius: tampilan tenang, soal terkurasi, dan pengalaman yang menyerupai ujian asli.</p>
+<div class="card">
+<p>Mulai latihan melalui menu <b>JFT</b> atau <b>JLPT</b>.</p>
+<button class="cta" onclick="show('jft')">Go to JFT Practice</button>
+</div>
+</section>
+
+<section id="jft">
+<h2 class="section-title">JFT Practice</h2>
+<div class="divider"></div>
+<div class="card">
+<span class="badge">Latihan Interaktif</span>
+<div class="jft-grid">
+<button class="jft-btn" onclick="loadJFT('jitensha')"><strong>JITENSHA</strong><span>自転車</span></button>
+<button class="jft-btn" onclick="loadJFT('kudamono')"><strong>KUDAMONO</strong><span>果物</span></button>
+<button class="jft-btn" onclick="loadJFT('kuroi')"><strong>KUROI</strong><span>黒い</span></button>
+<button class="jft-btn"><strong>OKIMASU</strong><span>置きます</span></button>
+<button class="jft-btn"><strong>SAIFU</strong><span>財布</span></button>
+<button class="jft-btn"><strong>KUTSUSHITA</strong><span>靴下</span></button>
+<button class="jft-btn"><strong>BASU</strong><span>バス</span></button>
+<button class="jft-btn"><strong>CHICHI</strong><span>父</span></button>
+<button class="jft-btn"><strong>ICHIGO</strong><span>いちご</span></button>
+<button class="jft-btn"><strong>KAGI</strong><span>鍵</span></button>
+<button class="jft-btn"><strong>KAWAII</strong><span>かわいい</span></button>
+<button class="jft-btn"><strong>KOUEN</strong><span>公園</span></button>
+<button class="jft-btn"><strong>OKAASAN</strong><span>お母さん</span></button>
+<button class="jft-btn"><strong>PANDA</strong><span>パンダ</span></button>
+<button class="jft-btn"><strong>SARADA</strong><span>サラダ</span></button>
+<button class="jft-btn"><strong>SHATSU</strong><span>シャツ</span></button>
+<button class="jft-btn"><strong>SOBA</strong><span>そば</span></button>
+<button class="jft-btn"><strong>TANA</strong><span>棚</span></button>
+<button class="jft-btn"><strong>SORA</strong><span>空</span></button>
+<button class="jft-btn"><strong>TOIRE</strong><span>トイレ</span></button>
+</div>
+<div id="jft-questions"></div>
+</div>
+
+<div class="card">
+<span class="badge">Kisi-kisi JFT</span>
+<h2 class="section-title">JFT Practice</h2>
+<div class="divider"></div>
+<div class="card">
+<span class="badge">Kisi-kisi JFT</span>
+<ul>
+<li>JITENSHA  – <a href="https://forms.gle/Va3DpDcGj44WF44e7" target="_blank">Latihan</a></li>
+<li>KUDAMONO  – <a href="https://forms.gle/uVFpNjfeFsJU59sj6" target="_blank">Latihan</a></li>
+<li>KUROI  – <a href="https://forms.gle/jjzsKsTZjSVfuvyr5" target="_blank">Latihan</a></li>
+<li>OKIMASU  – <a href="https://forms.gle/njhQXJCcuBmrb8fP8" target="_blank">Latihan</a></li>
+<li>SAIFU  – <a href="https://forms.gle/p3UBnD5VNzeukhrb7" target="_blank">Latihan</a></li>
+<li>KUTSUSHITA  – <a href="https://forms.gle/Q1GGvQ6Ksd42VaYo8" target="_blank">Latihan</a></li>
+<li>BASU – <a href="https://forms.gle/DT9ttkwySFE6fhoW6" target="_blank">Latihan</a></li>
+<li>CHICHI – <a href="https://forms.gle/tNPBiXg6riW1yrkx8" target="_blank">Latihan</a></li>
+<li>ICHIGO – <a href="https://forms.gle/UjV29t6VDGnd12v68" target="_blank">Latihan</a></li>
+<li>KAGI – <a href="https://forms.gle/Ng5fXA2BRL1F16gt9" target="_blank">Latihan</a></li>
+<li>KAWAII – <a href="https://forms.gle/9ohY5zHZr2xLiNqc7" target="_blank">Latihan</a></li>
+<li>KOUEN – <a href="https://forms.gle/zULotRx8oghbJeW86" target="_blank">Latihan</a></li>
+<li>OKAASAN – <a href="https://forms.gle/NVvcnA47wWSn2D1v9" target="_blank">Latihan</a></li>
+<li>PANDA – <a href="https://forms.gle/6kPYD32hHkFQPamp7" target="_blank">Latihan</a></li>
+<li>SARADA – <a href="https://forms.gle/9j17whNkk7J1suTK6" target="_blank">Latihan</a></li>
+<li>SHATSU – <a href="https://forms.gle/yoei4aqffNGAdzR99" target="_blank">Latihan</a></li>
+<li>SOBA – <a href="https://forms.gle/3dnhXd8ExvyoTNx47" target="_blank">Latihan</a></li>
+<li>TANA – <a href="https://forms.gle/zadzNm6gEXoERSMk8" target="_blank">Latihan</a></li>
+<li>SORA – <a href="https://forms.gle/eivgwVyi2f8nWw8i9" target="_blank">Latihan</a></li>
+<li>TOIRE – <a href="https://forms.gle/XGy1X9SS6iUnnZKA6" target="_blank">Latihan</a></li>
+</ul>
+</div>
+</section>
+
+<section id="jlpt">
+<h2 class="section-title">JLPT Practice</h2>
+<div class="divider"></div>
+<div class="card"><h3>JLPT N5</h3><p>Dasar: Hiragana, Katakana, Kotoba dasar, Bunpou sederhana.</p></div>
+<div class="card"><h3>JLPT N4</h3><p>Kehidupan sehari-hari, pola kalimat menengah awal.</p></div>
+<div class="card"><h3>JLPT N3</h3><p>Transisi ke level kerja & media sederhana.</p></div>
+<div class="card"><h3>JLPT N2</h3><p>Bahasa formal, artikel, dan konteks profesional.</p></div>
+<div class="card"><h3>JLPT N1</h3><p>Level akademik & native-level comprehension.</p></div>
+</section>
+
+<section id="premium">
+<h2 class="section-title">Premium Access</h2>
+<div class="divider"></div>
+<div class="card">
+<ul>
+<li>Full JFT practice & mock tests</li>
+<li>JLPT N5–N3 progression</li>
+<li>Timer & performance review</li>
+<li>Continuous updates</li>
+</ul>
+<p><b>Rp29.000 / bulan</b></p>
+<button class="cta">Join via WhatsApp</button>
+</div>
+</section>
+
+<footer>
+<p>By Salman Alhidamkara</p>
+</footer>
+
+<script>
+function show(id){document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
+
+const jftData={
+  jitensha:{
+    title:"JITENSHA（自転車）",
+    q:"（　）で学校へ行きます。",
+    options:["くるま","じてんしゃ","でんしゃ"],
+    answer:1,
+    explain:"じてんしゃ = sepeda"
+  },
+  kudamono:{
+    title:"KUDAMONO（果物）",
+    q:"りんごは（　）です。",
+    options:["やさい","くだもの","にく"],
+    answer:1,
+    explain:"りんご adalah buah"
+  },
+  kuroi:{
+    title:"KUROI（黒い）",
+    q:"このかばんは（　）です。",
+    options:["しろい","あかい","くろい"],
+    answer:2,
+    explain:"くろい = hitam"
+  }
+};
+
+function loadJFT(key){
+  const d=jftData[key];
+  let html=`<div class='card question'><h3>${d.title}</h3><p>${d.q}</p>`;
+  d.options.forEach((o,i)=>{html+=`<div class='option' onclick='answer(this,${i===d.answer})'>${o}</div>`});
+  html+=`<div class='explain' style='display:none'>${d.explain}</div></div>`;
+  document.getElementById('jft-questions').innerHTML=html;
+}
+
+function answer(el,correct){const q=el.parentElement;q.querySelectorAll('.option').forEach(o=>o.style.pointerEvents='none');if(correct){el.classList.add('correct')}else{el.classList.add('wrong')}q.querySelector('.explain').style.display='block'}
+</script>
+</body>
+</html>
